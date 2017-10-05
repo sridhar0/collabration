@@ -1,0 +1,53 @@
+<style>
+body
+{
+    background-image: url("images/blog.jpg");
+    background-repeat: no-repeat;
+	opacity:0.8;
+    background-size: 100%; 
+    padding-bottom: 75px;
+	background-attachment: fixed;
+}
+table
+{
+ background-color:honeydew;
+}
+
+
+</style>
+
+<div class="container">
+	<form name="listofblogposts" class="form-horizontal" >
+		<div class="form-group">
+				
+				<div class="col-sm-offset-2 col-sm-4">
+<div ng-show="currentUser.role=='ADMIN'">
+ List Of BlogPosts Waiting for Approval.<br>
+<table class="table">
+<thead>
+<tr><th><ins>Title</ins></th><th><ins>Author</ins></th><th><ins>Posted on</ins></th></tr>
+</thead>
+<tbody>
+<tr ng-repeat="blog in blogPostsWaitingForApproval">
+<td><a href="#/approveblogpost/{{blog.id}}">{{blog.blogTitle}}</td><td>{{blog.postedBy.username}}</td><td>{{blog.postedOn | date:'yyyy/MM/dd'}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+List Of Blog Posts Which Are Approved<br>
+<table class="table">
+<thead>
+<tr><th><ins>Title</ins></th><th><ins>Author</ins></th><th><ins>Posted on</ins></th></tr>
+</thead>
+<tbody>
+<tr ng-repeat="blog in blogPostsApproved">
+<td><a href="#/getblogpostbyid/{{blog.id}}">{{blog.blogTitle}}</td><td>{{blog.postedBy.username}}</td><td>{{blog.postedOn | date:'yyyy/MM/dd'}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</form>
+</div>

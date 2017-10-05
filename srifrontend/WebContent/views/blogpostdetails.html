@@ -1,0 +1,49 @@
+<style>
+body
+{
+    background-image: url("images/blog.jpg");
+    background-repeat: no-repeat;
+	opacity:0.8;
+    background-size: 100%; 
+    padding-bottom: 75px;
+	background-attachment: fixed;
+}
+
+</style>
+<div class="container">
+	<form name="blog" class="form-horizontal" >
+		<div class="form-group">
+				
+				<div class="col-sm-offset-2 col-sm-4">
+<div class="panel panel-default">
+<div class="panel-heading">
+<div>{{blogPost.blogTitle}}
+</div>
+<span><strong>CreatedBy:</strong>{{blogPost.postedBy.username}}
+</span>
+<span><strong>Created On:</strong>{{blogPost.postedOn | date:'medium'}}</span>
+
+</div>
+<div class="panel-body">
+{{blogPost.description}}
+</div>
+
+
+{{error.message}}
+
+<textarea rows="4" cols="15" ng-model="blogComment.commentText"></textarea>
+
+<input type="submit" ng-click="addComment()">
+
+<a ng-click="getComments()">ShowComments</a>
+<ul ng-show="ShowComments">
+<li ng-repeat="blogComment in blogComments" style="list-style : none">
+<span>{{blogComment.commentText}}</span>
+<span><strong>CommentedBy:</strong>{{blogComment.commentedBy.username}}</span>
+<span><strong>CommentedOn:</strong>{{blogComment.commentedOn | date : 'MM/dd/yyyy'}}</span>
+</ul>
+</div>
+</div>
+</div>
+</form>
+</div>
